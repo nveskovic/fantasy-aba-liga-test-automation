@@ -1,0 +1,23 @@
+<ivy-module version="2.0">
+    <info organisation="com.toptaltest" module="WebAppTest"/>
+
+    <configurations defaultconfmapping="compile->default">
+        <conf name="compile" description="Required to compile application"/>
+    </configurations>
+
+    <dependencies>
+        <!-- compile dependencies -->
+        <dependency org="org.slf4j" name="slf4j-api" rev="latest.integration"/>
+        <dependency org="ch.qos.logback" name="logback-classic" rev="latest.integration"/>
+        <dependency org="org.testng" name="testng" rev="6.9.10"/>
+        
+        <!-- TODO: 
+        	selenium-java has many jars downloaded as dependency that maybe is not needed
+        	exclude them in some later stage
+         -->
+        <dependency org="org.seleniumhq.selenium" name="selenium-java" rev="2.53.0" />
+        <dependency org="org.seleniumhq.selenium" name="selenium-server" rev="2.53.0" /> 
+        
+	</dependencies>
+
+</ivy-module>
