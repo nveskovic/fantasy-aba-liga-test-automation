@@ -1,4 +1,4 @@
-<project name="WebAppTest" default="build" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="Sparked Govern" default="build" xmlns:ivy="antlib:org.apache.ivy.ant">
 
     <!--
     ================
@@ -28,6 +28,7 @@
     		<path refid="lib.classpath"/>
     		<fileset dir="${classes.dir}" includes="**/*.class"/>
     		<dirset dir="${classes.dir}"/>
+    		<dirset dir="${resources.dir}"/>
     	</path>
     	
         <ivy:resolve/>
@@ -65,7 +66,7 @@
         	destdir="${classes.dir}" 
         	includeantruntime="false" 
         	debug="true" 
-    		classpathref="lib.classpath"
+    		classpathref="project.classpath"
         	>
         </javac>
     </target>
@@ -105,5 +106,4 @@
 		<xmlfileset dir="${testng_suites.dir}" includes="${SUITE_FILE}"/>
 		</testng>
 	</target>
-
 </project>
