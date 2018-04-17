@@ -1,4 +1,4 @@
-package com.toptal.webapptest.pages;
+package com.nveskovic.webapptest.pages;
 
 import java.util.concurrent.TimeUnit;
 

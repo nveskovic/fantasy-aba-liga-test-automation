@@ -1,4 +1,4 @@
-package com.toptal.webapptest.pages;
+package com.nveskovic.webapptest.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,20 +6,20 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class PrizesPage extends BasePage {
+public class RulesPage extends BasePage {
 
-	private static Logger logger = LoggerFactory.getLogger(PrizesPage.class);
+	private static Logger logger = LoggerFactory.getLogger(RulesPage.class);
 	
-	public PrizesPage(WebDriver driver) {
+	public RulesPage(WebDriver driver) {
 		super(driver);
 	}
 
 	@FindBy(id = "dnn_ctr431_ContentPane")
-	WebElement prizesContent;
+	WebElement rulesContent;
 	
-	public boolean isPrizesContentDisplayed () {
+	public boolean isRulesContentDisplayed () {
 		try{
-			return prizesContent.isDisplayed();
+			return rulesContent.isDisplayed();
 		} catch(Exception e) {
 			return false;
 		}

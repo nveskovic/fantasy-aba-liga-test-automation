@@ -1,13 +1,13 @@
-package com.toptal.webapptest.test;
+package com.nveskovic.webapptest.test;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.toptal.webapptest.pages.BasePage;
-import com.toptal.webapptest.pages.ChangeTeamPage;
-import com.toptal.webapptest.pages.TeamPage;
+import com.nveskovic.webapptest.pages.BasePage;
+import com.nveskovic.webapptest.pages.ChangeTeamPage;
+import com.nveskovic.webapptest.pages.TeamPage;
 
 public class ChangeTeamTest extends BaseTest {
 	
