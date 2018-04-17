@@ -1,4 +1,4 @@
-package com.toptal.webapptest.test;
+package com.nveskovic.webapptest.test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +9,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.toptal.webapptest.pages.BasePage;
-import com.toptal.webapptest.pages.PrivateLeaguesPage;
-import com.toptal.webapptest.pages.StandingsPage;
+import com.nveskovic.webapptest.pages.BasePage;
+import com.nveskovic.webapptest.pages.PrivateLeaguesPage;
+import com.nveskovic.webapptest.pages.StandingsPage;
 
 public class PrivateLeagueTest extends BaseTest{
 

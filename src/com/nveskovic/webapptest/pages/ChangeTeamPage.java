@@ -1,4 +1,4 @@
-package com.toptal.webapptest.pages;
+package com.nveskovic.webapptest.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

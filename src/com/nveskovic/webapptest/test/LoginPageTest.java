@@ -1,4 +1,4 @@
-package com.toptal.webapptest.test;
+package com.nveskovic.webapptest.test;
 
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -7,16 +7,16 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.toptal.webapptest.pages.LoginPage;
-import com.toptal.webapptest.pages.PlayersPage;
-import com.toptal.webapptest.pages.PrivateLeaguesPage;
-import com.toptal.webapptest.pages.PrizesPage;
-import com.toptal.webapptest.pages.RulesPage;
-import com.toptal.webapptest.pages.StandingsPage;
-import com.toptal.webapptest.pages.BasePage;
-import com.toptal.webapptest.pages.HowToPlayPage;
-import com.toptal.webapptest.pages.LoginErrorPage;
-import com.toptal.webapptest.pages.TeamPage;
+import com.nveskovic.webapptest.pages.BasePage;
+import com.nveskovic.webapptest.pages.HowToPlayPage;
+import com.nveskovic.webapptest.pages.LoginErrorPage;
+import com.nveskovic.webapptest.pages.LoginPage;
+import com.nveskovic.webapptest.pages.PlayersPage;
+import com.nveskovic.webapptest.pages.PrivateLeaguesPage;
+import com.nveskovic.webapptest.pages.PrizesPage;
+import com.nveskovic.webapptest.pages.RulesPage;
+import com.nveskovic.webapptest.pages.StandingsPage;
+import com.nveskovic.webapptest.pages.TeamPage;
 
 public class LoginPageTest extends BaseTest {
 	
