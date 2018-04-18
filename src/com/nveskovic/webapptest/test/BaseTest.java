@@ -55,7 +55,22 @@ public class BaseTest {
 
 		String currentDir = System.getProperty("user.dir");
 		String driverPath = Paths.get(currentDir,"/data/drivers").toString();
-		String driverPathSuffix = (OsUtils.getOsType() == OsUtils.OsType.WINDOWS ? ".exe" : "");
+		String driverPathSuffix = "";
+
+		switch(OsUtils.getOsType()) {
+			case WINDOWS: {
+				driverPath += "/win";
+				driverPathSuffix = ".exe";
+			}break;
+
+			case MAC: {
+				driverPath += "/mac";
+			}break;
+
+			case LINUX: {
+				driverPath += "/mac";
+			}break;
+		}
 
 		switch(bt) {
 

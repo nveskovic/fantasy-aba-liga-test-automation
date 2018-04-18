@@ -46,7 +46,7 @@
 
 
 		<!-- extract browser binaries from tar archive -->
-		<unzip dest="${browser.binaries.folder}">
+		<unzip dest="${browser.binaries.folder}/linux">
 			<fileset dir="${lib.dir}">
 				<include name="chromedriver*linux*.zip" />
 			</fileset>
@@ -55,7 +55,16 @@
 			</patternset>
 			<mapper type="flatten"/>
 		</unzip>
-		<unzip dest="${browser.binaries.folder}">
+		<unzip dest="${browser.binaries.folder}/mac">
+			<fileset dir="${lib.dir}">
+				<include name="chromedriver*mac*.zip" />
+			</fileset>
+			<patternset>
+				<include name="chromedriver"/>
+			</patternset>
+			<mapper type="flatten"/>
+		</unzip>
+		<unzip dest="${browser.binaries.folder}/win">
 			<fileset dir="${lib.dir}">
 				<include name="chromedriver*win*.zip" />
 			</fileset>
@@ -64,7 +73,7 @@
 			</patternset>
 			<mapper type="flatten"/>
 		</unzip>
-		<unzip dest="${browser.binaries.folder}">
+		<unzip dest="${browser.binaries.folder}/win">
 			<fileset dir="${lib.dir}">
 				<include name="geckodriver*win*.zip" />
 			</fileset>
@@ -73,13 +82,18 @@
 			</patternset>
 			<mapper type="flatten"/>
 		</unzip>
-		<gunzip dest="${browser.binaries.folder}/geckodriver">
+		<gunzip dest="${browser.binaries.folder}/linux/geckodriver">
 			<fileset dir="${lib.dir}">
 				<include name="geckodriver*linux*.gz" />
 			</fileset>
-		</gunzip >
+		</gunzip>
+		<gunzip dest="${browser.binaries.folder}/mac/geckodriver">
+			<fileset dir="${lib.dir}">
+				<include name="geckodriver*mac*.gz" />
+			</fileset>
+		</gunzip>
 
-		<chmod dir="${browser.binaries.folder}" perm="ugo+x" includes="*"/>
+		<chmod dir="${browser.binaries.folder}" perm="ugo+x" includes="**/*"/>
 
 		<!-- delete dowloaded (not needed) archives -->
 		<delete>

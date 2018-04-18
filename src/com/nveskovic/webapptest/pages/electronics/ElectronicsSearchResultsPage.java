@@ -23,6 +23,9 @@ public class ElectronicsSearchResultsPage {
 	@FindBy (className = "filter_second_line_dv")
 	WebElement filtersHeader;
 
+	@FindBy (id = "page_main")
+	WebElement searchResultsTable;
+
 	public ElectronicsSearchResultsPage clickOnPriceLinkInTableHeader() {
 		this.priceTableHeader.findElement(By.tagName("a")).click();
 		return PageFactory.initElements(driver, ElectronicsSearchResultsPage.class);
@@ -38,4 +41,11 @@ public class ElectronicsSearchResultsPage {
 		return PageFactory.initElements(driver, ElectronicsSearchResultsPage.class);
 	}
 
+    public void clickOnLinkByLinkTest(String text) {
+		driver.findElement(By.linkText(text)).click();
+    }
+
+	public int getNumberOfResultsInPage() {
+		return searchResultsTable.findElement(By.tagName("table")).findElements(By.xpath("//tr[@id = starts-with('tr_')]")).size();
+	}
 }

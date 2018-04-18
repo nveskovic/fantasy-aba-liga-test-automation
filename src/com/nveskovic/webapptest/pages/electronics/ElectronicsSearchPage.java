@@ -15,7 +15,8 @@ public class ElectronicsSearchPage {
 	
 	private WebDriver driver;
 	private static Logger logger = LoggerFactory.getLogger(ElectronicsSearchPage.class);
-	
+
+
 	public ElectronicsSearchPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -28,9 +29,13 @@ public class ElectronicsSearchPage {
 	
 	@FindBy (id = "sbtn")
 	WebElement searchButton;
-	
-	
-	
+
+	@FindBy (name = "topt[8][min]")
+	WebElement minPrice;
+
+	@FindBy (name = "topt[8][max]")
+	WebElement maxPrice;
+
 	public void setNameOrPhrase(String text) {
 		WebDriverUtils.setText(this.nameOrPhraseField, text);
 	}
@@ -48,5 +53,12 @@ public class ElectronicsSearchPage {
 	public void dismissSmartSearchList() {
 		// click on first row-column in the table should dismiss SmartSearch list
 		driver.findElements(By.className("td6")).get(0).click();
+	}
+
+    public void setMinPrice(String minPrice) {
+		WebDriverUtils.setText(this.minPrice, minPrice);
+    }
+	public void setMaxPrice(String maxPrice) {
+		WebDriverUtils.setText(this.maxPrice, maxPrice);
 	}
 }

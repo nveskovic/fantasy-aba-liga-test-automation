@@ -2,6 +2,10 @@
 /bin/
 /build/
 /test-output/
+/out/
 
 /data/drivers
+
+# Project files/folders
 /.settings/
+/.idea/

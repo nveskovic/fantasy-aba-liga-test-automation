@@ -1,6 +1,9 @@
 package com.nveskovic.webapptest.test;
 
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.nveskovic.webapptest.pages.HomePage;
@@ -9,6 +12,8 @@ import com.nveskovic.webapptest.pages.electronics.ElectronicsSearchPage;
 import com.nveskovic.webapptest.pages.electronics.ElectronicsSearchResultsPage;
 
 public class HomeAssignementTest extends BaseTest {
+
+	private static Logger logger = LoggerFactory.getLogger(HomeAssignementTest.class);
 
 	private HomePage homePage;
 	private ElectronicsPage electronicsPage;
@@ -61,6 +66,24 @@ public class HomeAssignementTest extends BaseTest {
 		searchResultsPage = searchResultsPage.clickOnPriceLinkInTableHeader();
 		searchResultsPage = searchResultsPage.selectTypeOfItemsByName("Продажа");
 		
-		
+		// 7. Open “Расширенный поиск”. (advanced search)
+		searchResultsPage.clickOnLinkByLinkTest("Расширенный поиск");
+		electronicsSearchPage = PageFactory.initElements(driver, ElectronicsSearchPage.class);
+
+		// 8. Enter search option price between 160 and 300
+		electronicsSearchPage.setMinPrice("160");
+		electronicsSearchPage.setMaxPrice("300");
+		searchResultsPage = electronicsSearchPage.clickOnSearchButton();
+
+		int numOfResults = searchResultsPage.getNumberOfResultsInPage();
+		logger.info(""+numOfResults);
+		Assert.assertTrue(numOfResults >= 3, "More than 3 results are displayed");
+
+
+		for(int i=0; i<3; i++) {
+			logger.info(""+ (i*numOfResults/3 + numOfResults/6));
+		}
+
+
 	}
 }
