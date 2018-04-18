@@ -14,15 +14,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import com.nveskovic.webapptest.pages.BasePage;
-import com.nveskovic.webapptest.pages.LoginPage;
 import com.nveskovic.webapptest.utils.BrowserType;
 import com.nveskovic.webapptest.utils.OsUtils;
 
@@ -123,17 +119,6 @@ public class BaseTest {
 		
 		driver = initWebDriver(browserType, visibleBrowser);
 		driver.manage().window().maximize();
-	}
-	
-	protected BasePage loginToHomePage() {
-		BasePage basePage = PageFactory.initElements(driver, BasePage.class);
-		if(!basePage.isLoggedIn(0)) {
-			LoginPage loginPage = basePage.clickOnLoginLink();
-			basePage = loginPage.login(username, password, BasePage.class);
-			Assert.assertTrue(basePage.isLoggedIn(3), "User is logged in");
-		}
-		
-		return basePage;
 	}
 
 	@AfterSuite(alwaysRun = true)
