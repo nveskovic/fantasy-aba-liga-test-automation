@@ -1,5 +1,5 @@
 # Web application test automation example
-Web application test automation example for www.fantasy.aba-liga.com
+Web application test automation example for http://ss.com as a part of initial interview
 
 Prerequisites: Apache ant
 
