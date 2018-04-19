@@ -1,11 +1,14 @@
 package com.nveskovic.webapptest.test;
 
+import java.util.ArrayList;
+
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.nveskovic.webapptest.pages.FavoritesPage;
 import com.nveskovic.webapptest.pages.HomePage;
 import com.nveskovic.webapptest.pages.electronics.ElectronicsPage;
 import com.nveskovic.webapptest.pages.electronics.ElectronicsSearchPage;
@@ -19,6 +22,8 @@ public class HomeAssignementTest extends BaseTest {
 	private ElectronicsPage electronicsPage;
 	private ElectronicsSearchPage electronicsSearchPage;
 	private ElectronicsSearchResultsPage searchResultsPage;
+
+	private FavoritesPage favoritesPage;
 
 	/**
 	 * 1. Open the browser and maximize it.
@@ -56,7 +61,14 @@ public class HomeAssignementTest extends BaseTest {
 		electronicsSearchPage = PageFactory.initElements(driver, ElectronicsSearchPage.class);
 		
 		electronicsSearchPage.setNameOrPhrase("iphone");
+		
+		// pause in order to get smart search to be displayed
+		try{Thread.sleep(500);}catch(Exception e){};
 		electronicsSearchPage.dismissSmartSearchList();
+		
+		// pause to give some time for smartsearch to disappear
+		try{Thread.sleep(500);}catch(Exception e){};
+		
 		electronicsSearchPage.selectSubsectionByValue("2"); //buying
 		
 		// 5. Click Search
@@ -73,17 +85,44 @@ public class HomeAssignementTest extends BaseTest {
 		// 8. Enter search option price between 160 and 300
 		electronicsSearchPage.setMinPrice("160");
 		electronicsSearchPage.setMaxPrice("300");
+		electronicsSearchPage.selectSubsectionByIndex(0); //no value
 		searchResultsPage = electronicsSearchPage.clickOnSearchButton();
 
-		int numOfResults = searchResultsPage.getNumberOfResultsInPage();
-		logger.info(""+numOfResults);
-		Assert.assertTrue(numOfResults >= 3, "More than 3 results are displayed");
+		ArrayList<String> itemsInPage = searchResultsPage.getAllResultsFromPage();
+		Assert.assertTrue(itemsInPage.size() >= 3, "More than 3 results are displayed");
 
-
+		// 9. Choose at least 3 random ads
+		ArrayList<String> pickedItems = new ArrayList<String>();
+		
+		/* pick 3 elements from the list
+		 * divide in three parts and pick from the middle of each part
+		 * Example: if list has 30 items, parts will be 0-9, 10-19, 20-29,
+		 * so picked items will be 5, 15, 25
+		 */
 		for(int i=0; i<3; i++) {
-			logger.info(""+ (i*numOfResults/3 + numOfResults/6));
+			int index = i*itemsInPage.size()/3 + itemsInPage.size()/6;
+			searchResultsPage.clickOnItemCheckboxByIndex(index);
+			Assert.assertTrue(searchResultsPage.getStateOfItemCheckboxByIndex(index));
+			pickedItems.add(itemsInPage.get(index));
 		}
+		
+		// 10. Press “Добавить выбранные в закладки” ( = add to memo)
+		searchResultsPage.clickOnAddToMemoLink();
+		searchResultsPage.clickOnAlertOKButton();
 
-
+		// 11. Open “Закладки” and check that the ads on the page match the previously selected
+		favoritesPage = searchResultsPage.clickOnFavoritesLink();
+		ArrayList<String> favoriteItems = favoritesPage.getAllResultsFromPage();
+		
+		logger.debug("picked items");
+		for(String s : pickedItems)logger.debug(s);
+		logger.debug("fav items");
+		for(String s : favoriteItems)logger.debug(s);
+		
+		Assert.assertTrue(favoriteItems.containsAll(pickedItems), "Picked and Favorited items must be the same");
+		Assert.assertTrue(pickedItems.containsAll(favoriteItems), "Picked and Favorited items must be the same");
+		
+		
+		// 12. Close the browser. - TestNg will do it in afterSuite metod
 	}
 }

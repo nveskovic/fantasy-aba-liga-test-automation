@@ -44,6 +44,11 @@ public class ElectronicsSearchPage {
 		Select select = new Select(this.subsectionDropdown);
 		select.selectByValue(value);
 	}
+
+	public void selectSubsectionByIndex(int index) {
+		Select select = new Select(this.subsectionDropdown);
+		select.selectByIndex(index);
+	}
 	
 	public ElectronicsSearchResultsPage clickOnSearchButton() {
 		this.searchButton.click();
