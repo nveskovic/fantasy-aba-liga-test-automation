@@ -1,7 +1,9 @@
 # Web application test automation example
 Web application test automation example for http://ss.com as a part of initial interview
 
-Prerequisites: Apache ant and Apache Ivy
+# Prerequisites: 
+
+Apache ant and Apache Ivy
 
 # How to run:
 
