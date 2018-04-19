@@ -3,7 +3,9 @@ Web application test automation example for http://ss.com as a part of initial i
 
 # Prerequisites: 
 
-Apache ant and Apache Ivy
+Tools: Apache ant and Apache Ivy
+
+Browsers: Chrome and/or Firefox
 
 # How to run:
 
